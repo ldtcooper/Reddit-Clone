@@ -24,6 +24,12 @@ class User < ApplicationRecord
   primary_key: :id,
   foreign_key: :moderator_id
 
+  has_many :posts,
+  class_name: :Post,
+  primary_key: :id,
+  foreign_key: :author_id
+
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
