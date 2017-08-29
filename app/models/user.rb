@@ -19,6 +19,11 @@ class User < ApplicationRecord
 
   attr_reader :password
 
+  has_many :moderated_subs,
+  class_name: :Sub,
+  primary_key: :id,
+  foreign_key: :moderator_id
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
