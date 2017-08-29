@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
+  resources :subs, except: [:destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 #
@@ -12,4 +13,12 @@ Rails.application.routes.draw do
 # new_session GET    /session/new(.:format) sessions#new
 # session DELETE /session(.:format)     sessions#destroy
 #        POST   /session(.:format)     sessions#create
+# 
+# subs GET    /subs(.:format)          subs#index
+#            POST   /subs(.:format)          subs#create
+#    new_sub GET    /subs/new(.:format)      subs#new
+#   edit_sub GET    /subs/:id/edit(.:format) subs#edit
+#        sub GET    /subs/:id(.:format)      subs#show
+#            PATCH  /subs/:id(.:format)      subs#update
+#            PUT    /subs/:id(.:format)      subs#update
 end
