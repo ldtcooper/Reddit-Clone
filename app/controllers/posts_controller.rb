@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :require_login, only: [:create, :new, :destroy]
+  before_action :require_author, only: [:edit, :update, :destroy]
 
   def new
   end
@@ -8,7 +10,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def create
@@ -34,5 +35,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :url, :content)
+  end
+
+  def require_author
+    @post = Post.find(params[:id])
+    redirect_to post_url(@post) unless @post.author_id == current_user.id
   end
 end

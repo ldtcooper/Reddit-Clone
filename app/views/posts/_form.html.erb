@@ -1,0 +1,28 @@
+<h1><%= page_type %></h1>
+
+<form action="<%= form_route %>" method="post">
+  <%= authentication %>
+
+  <% if page_type == "Edit Post" %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+
+  <label>
+    Title
+    <input type="text"
+           name="post[title]"
+           value="<%= @post.title if @post %>">
+  </label>
+
+  <label>
+    URL
+    <input type="text"
+           name="post[password]"
+           value="<%= @post.url if @post %>">
+  </label>
+    Content
+    <textarea name="post[content]" rows="8" cols="80"><%= @post.content if @post %></textarea>
+  </label>
+
+  <input type="submit" name="" value="<%= page_type %>">
+</form>
