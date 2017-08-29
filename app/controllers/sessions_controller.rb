@@ -9,8 +9,7 @@ class SessionsController < ApplicationController
       render :new
     else
       login!(@user)
-      render json: @user
-      # redirect to somewhere
+      redirect_to subs_url
     end
   end
 

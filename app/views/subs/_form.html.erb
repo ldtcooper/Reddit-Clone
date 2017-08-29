@@ -1,0 +1,19 @@
+<h1><%= page_type %></h1>
+
+<form action="<%= form_type %>" method="post">
+  <%= authentication %>
+
+  <% if page_type == "Edit Sub" %>
+    <input type="hidden" name="_method" value="PATCH">
+  <% end  %>
+  
+  <label>Title:
+    <input type="text" name="sub[title]" value="<%= @sub.title if @sub %>">
+  </label>
+  <label>Description:
+    <textarea name="sub[description]" rows="8" cols="80">
+    <%= @sub.description if @sub %></textarea>
+  </label>
+
+  <input type="submit" name="" value="<%= page_type %>">
+</form>
