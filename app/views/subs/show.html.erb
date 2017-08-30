@@ -5,4 +5,15 @@
 <% if @sub.moderator_id == current_user.id %>
   <%= button_to "Edit Sub", edit_sub_url(@sub), method: :get %>
 <% end %>
+
+<%= button_to "Make Post", new_post_url, method: :get %>
+
+<article>
+  <ul>
+    <% @sub.posts.each do |post| %>
+      <li><%= link_to "#{post.title}", post_url(post.id) %></li>
+    <% end %>
+  </ul>
+</article>
+
 <%= button_to "Back to Main", subs_url, method: :get %>
