@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
   resources :subs, except: [:destroy] do
-    resources :posts, only: [:create]
+    resources :posts, only: [:new, :create]
   end
-  resources :posts, except: [:index, :create]
+  resources :posts, except: [:new, :index, :create]
 
 end
 #
@@ -29,7 +29,7 @@ end
 
 
 # sub_posts POST   /subs/:sub_id/posts(.:format) posts#create
-# new_post GET    /posts/new(.:format)          posts#new
+# new_sub_post GET    /subs/:sub_id/posts/new(.:format) posts#new
 # edit_post GET    /posts/:id/edit(.:format)     posts#edit
 #   post GET    /posts/:id(.:format)          posts#show
 #        PATCH  /posts/:id(.:format)          posts#update

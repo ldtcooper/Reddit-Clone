@@ -6,7 +6,7 @@
   <%= button_to "Edit Sub", edit_sub_url(@sub), method: :get %>
 <% end %>
 
-<%= button_to "Make Post", new_post_url, method: :get %>
+<%= button_to "Make Post", new_sub_post_url(@sub), method: :get %>
 
 <article>
   <ul>

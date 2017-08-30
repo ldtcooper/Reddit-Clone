@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+10.times do
+  User.create(username: Faker::WorldOfWarcraft.hero, password: 'password')
+end
+
+10.times do
+  Sub.create(title: (Faker::Hacker.adjective + Faker::Hacker.noun),
+              description: Faker::Hacker.say_something_smart,
+              moderator_id: (rand(11) + 1))
+end
+
+30.times do
+  Post.create(title: Faker::Hipster.sentence,
+              url: Faker::Internet.url,
+              content: Faker::Hipster.paragraph,
+              author_id: (rand(11) + 1),
+              sub_id: (rand(9) + 1))
+end

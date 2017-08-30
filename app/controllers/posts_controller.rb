@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: [:create, :new, :destroy]
+  before_action :require_logged_in, only: [:create, :new, :destroy]
   before_action :require_author, only: [:edit, :update, :destroy]
 
   def new
+    @sub = Sub.find(params[:sub_id])
   end
 
   def show

@@ -1,0 +1,12 @@
+<ul>
+  <li> Author:<%= @post.author.username %> </li>
+  <li> Title:<%= @post.title %> </li>
+  <% if @post.url %>
+    <li> URL:<%= @post.url %> </li>
+  <% end %>
+  <% if @post.content %>
+    <li> Content:<%= @post.content %> </li>
+  <% end %>
+</ul>
+
+<%= button_to "Back to Sub", sub_url(@post.sub.id), method: :get %>
